@@ -1,0 +1,12 @@
+CPSC 456 Project 1: Ransom Worm
+
+Members: David Poss, Billy Dang, Gerard Cortes
+
+Usage: $ython ransom.py <username file> <passord file>
+
+Notes:
+1. Works similarly to replicator worm, but looks for a different marker file and will delete its files after executing.
+2. To unencrypt, run 
+   $ openssl enc -aes-256-cbc -d -in ineedmoneyplz.tar -out Documents -pass pass:cpsc456
+   Then to untar that file, run 
+   $ tar -xzf Documents
